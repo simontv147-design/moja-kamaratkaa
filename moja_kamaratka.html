@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre teba 💚</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #ffe6f0, #ffccd5);
+        color: #333;
+        text-align: center;
+        padding: 30px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    h1 {
+        color: #e63946;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 6px #fff;
+    }
+    #story, #result {
+        margin-top: 20px;
+        font-size: 1.3em;
+        line-height: 1.8em;
+        min-height: 180px;
+    }
+    button {
+        padding: 14px 28px;
+        margin: 12px;
+        font-size: 18px;
+        border-radius: 16px;
+        border: none;
+        cursor: pointer;
+        background: linear-gradient(45deg, #ff85a2, #ff4d6d);
+        color: #fff;
+        box-shadow: 2px 6px 14px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+    }
+    button:hover {
+        transform: scale(1.1);
+        background: linear-gradient(45deg, #ff4d6d, #e63946);
+    }
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+    .heart {
+        display: inline-block;
+        color: #e63946;
+        animation: float 2s ease-in-out infinite;
+    }
+</style>
+</head>
+<body>
+
+<h1>💚 Pre teba 💚</h1>
+
+<div id="story"></div>
+
+<div id="choices" style="display:none;">
+    <button onclick="showResult(1)">Trochu 😅</button>
+    <button onclick="showResult(2)">Veľmi ❤️</button>
+    <button onclick="showResult(3)">Bez nej by som deň neprežil 🥹</button>
+</div>
+
+<div id="result"></div>
+
+<script>
+const storyText = [
+    "Vždy si ako prvá lajkla moje storky...",
+    "A tak sme si začali písať.",
+    "Počas prázdnin sme spolu chodili von a zažili nezabudnuteľné chvíle!",
+    "Si pre mňa veľmi dôležitá.",
+    "Vážim si ťa a vždy si ku mne milá.",
+    "Si najmilsia a najkrajšia osoba, ktorú poznám.",
+    "Ako veľmi ťa mám rád?"
+];
+
+const storyElement = document.getElementById("story");
+const choicesElement = document.getElementById("choices");
+
+let i = 0;
+
+function typeText(text, index = 0, callback) {
+    if(index < text.length) {
+        storyElement.innerHTML += text[index];
+        setTimeout(() => typeText(text, index + 1, callback), 40);
+    } else {
+        storyElement.innerHTML += "<br>";
+        if(callback) callback();
+    }
+}
+
+function showNextLine() {
+    if(i < storyText.length) {
+        typeText(storyText[i], 0, () => {
+            i++;
+            setTimeout(showNextLine, 500);
+        });
+    } else {
+        choicesElement.style.display = "block";
+    }
+}
+
+// Spustí sa hra
+showNextLine();
+
+function showResult(choice) {
+    let text = "";
+    if(choice === 1){
+        text = "Hej, len trochu? 😅 Myslím, že si klamem sám sebe...";
+    } else if(choice === 2){
+        text = "Tak to uznávam! ❤️ Máš ma rád a ja teba tiež!";
+    } else if(choice === 3){
+        text = "🥹 Bez teba by som deň neprežila...<br>Si moja naj kamarátka, robíš moje dni krajšími a vždy si ku mne milá 💕";
+    }
+    storyElement.style.display = "none";
+    choicesElement.style.display = "none";
+    const resultElement = document.getElementById("result");
+    let i = 0;
+
+    function typeResult() {
+        if(i < text.length){
+            resultElement.innerHTML += text[i];
+            i++;
+            setTimeout(typeResult, 40);
+        }
+    }
+    typeResult();
+}
+</script>
+
+</body>
+</html>
+
+
