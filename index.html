@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pre teba 💚</title>
+<title>Pre teba</title>
 <style>
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -44,28 +44,18 @@
         transform: scale(1.1);
         background: linear-gradient(45deg, #ff4d6d, #e63946);
     }
-    @keyframes float {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-        100% { transform: translateY(0px); }
-    }
-    .heart {
-        display: inline-block;
-        color: #e63946;
-        animation: float 2s ease-in-out infinite;
-    }
 </style>
 </head>
 <body>
 
-<h1>💚 Pre teba 💚</h1>
+<h1>Pre teba</h1>
 
 <div id="story"></div>
 
 <div id="choices" style="display:none;">
-    <button onclick="showResult(1)">Trochu 😅</button>
-    <button onclick="showResult(2)">Veľmi ❤️</button>
-    <button onclick="showResult(3)">Bez nej by som deň neprežil 🥹</button>
+    <button onclick="showResult(1)">Trochu</button>
+    <button onclick="showResult(2)">Veľmi</button>
+    <button onclick="showResult(3)">Bez nej by som deň neprežil</button>
 </div>
 
 <div id="result"></div>
@@ -113,11 +103,11 @@ showNextLine();
 function showResult(choice) {
     let text = "";
     if(choice === 1){
-        text = "Hej, len trochu? 😅 Myslím, že si klamem sám sebe...";
+        text = "Hej, len trochu? Myslím, že si klamem sám sebe...";
     } else if(choice === 2){
-        text = "Tak to uznávam! ❤️ Máš ma rád a ja teba tiež!";
+        text = "Tak to uznávam! Máš ma rád a ja teba tiež!";
     } else if(choice === 3){
-        text = "🥹 Bez teba by som deň neprežila...<br>Si moja naj kamarátka, robíš moje dni krajšími a vždy si ku mne milá 💕";
+        text = "Bez teba by som deň neprežila... Si moja naj kamarátka, robíš moje dni krajšími a vždy si ku mne milá.";
     }
     storyElement.style.display = "none";
     choicesElement.style.display = "none";
@@ -137,5 +127,3 @@ function showResult(choice) {
 
 </body>
 </html>
-
-
